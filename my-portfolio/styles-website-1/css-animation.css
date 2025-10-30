@@ -1,0 +1,62 @@
+body{
+    background: linear-gradient(135deg,#000428, #004e92);
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Times New Roman', Times, serif;
+    overflow: hidden;
+}
+.center{
+    position: relative;
+}
+/* for magic */
+.magic-btn{
+    position: relative;
+    padding: 18px 45px;
+    font-size: 1.1rem;
+    color: #fff;
+    background: linear-gradient(45deg, #ff216c, #ff4b2b);
+    border: none;
+    border-radius: 50px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition: 0.4s ease;
+    z-index: 1;
+    animation: breathe 3s infinite ease-in-out;
+}
+/* glow border circulation effect*/
+.magic-btn::before{
+    content: "";
+    position: absolute;
+    inset: -3px;
+    border-radius: 50px;
+    padding: 3px;
+    background: linear-gradient(90deg,#ff4b2b,#ff216c, #00dbde, #fc00ff, #ff4b2b);
+    background-size: 400%;
+    animation: border-flow 6s linear infinite;
+    -webkit-mask: linear-gradient(#fff 0 0) content-box,
+    linear-gradient(#fff 0 0);
+    -webkit-mask-composite: xor;
+    mask-composite: exclude;
+    z-index: -1;
+}
+/*hover effect*/
+.magic-btn:hover{
+    transform: scale(1.08);
+    background: linear-gradient(45deg,#00dbde, #fc00ff);
+    box-shadow: 0 0 25px rgba(0, 219, 222, 0.5);
+}
+/* keyframe animations*/
+@keyframes borderflow {
+    0%{background-position: 0% 50%;}
+    100%{background-position: 400% 50%;}
+}
+@keyframes breathe {
+    0%, 10%{transform: scale(1);
+    box-shadow: 0 0 20px rgba(225, 65, 108, 0.3);}
+    50%{transform: scale(1.05);
+    box-shadow: 0 0 40px rgba(255, 65, 108, 0.6);}
+    
+}
